@@ -1,5 +1,7 @@
 package com.erinfan.bank;
 
+import java.util.Date;
+
 /**
  * Created by techops on 5/7/14.
  */
@@ -13,5 +15,9 @@ public class Bank {
 
     public String getCustomerNickName() {
         return customer.getNickName();
+    }
+
+    public Date getCustomerDateOfBirth() {
+        return customer.getDateOfBirth();
     }
 }
