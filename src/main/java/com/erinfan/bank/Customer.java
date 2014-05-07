@@ -1,8 +1,8 @@
 package com.erinfan.bank;
 
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by techops on 5/7/14.
@@ -20,11 +20,9 @@ public class Customer {
     }
 
     public void setDateOfBirth(String dateOfBirth) throws ParseException {
-        SimpleDateFormat bartDateFormat =
-                new SimpleDateFormat("MM-dd-yyyy");
-        Date date = bartDateFormat.parse(dateOfBirth);
-
-        this.dateOfBirth = date;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = (Date) sdf.parse(dateOfBirth);
+        this.dateOfBirth = new Date(date.getTime());
     }
 
     public Date getDateOfBirth() {

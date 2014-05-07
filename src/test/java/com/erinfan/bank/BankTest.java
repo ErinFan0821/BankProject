@@ -14,11 +14,9 @@ public class BankTest {
         Bank bank = new Bank();
         final Customer customer = new Customer();
         customer.setNickName("ErinFan");
-        customer.setDateOfBirth("5-4-2014");
+        customer.setDateOfBirth("2014-05-04");
         bank.addCustomer(customer);
         assertThat(bank.getCustomerNickName(), is("ErinFan"));
-        assertThat(bank.getCustomerDateOfBirth().toString(), is("5-4-2014"));
+        assertThat(bank.getCustomerDateOfBirth().toString(), is("2014-05-04"));
     }
-
-
 }
