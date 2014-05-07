@@ -21,7 +21,7 @@ public class Customer {
 
     public void setDateOfBirth(String dateOfBirth) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = (Date) sdf.parse(dateOfBirth);
+        java.util.Date date = sdf.parse(dateOfBirth);
         this.dateOfBirth = new Date(date.getTime());
     }
 
