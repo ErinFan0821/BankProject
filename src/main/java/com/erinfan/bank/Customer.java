@@ -11,11 +11,6 @@ public class Customer {
     private String nickName;
     private Date dateOfBirth;
 
-    public Customer() {
-        this.nickName = "";
-        this.dateOfBirth = null;
-    }
-
     public void setNickName(String nickName) {
         this.nickName = nickName;
     }
