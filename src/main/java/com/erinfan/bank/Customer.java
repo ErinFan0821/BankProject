@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 public class Customer {
     private String nickName;
     private Date dateOfBirth;
+    private Account account;
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
@@ -27,5 +28,13 @@ public class Customer {
 
     public Date getDateOfBirth() {
         return dateOfBirth;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
