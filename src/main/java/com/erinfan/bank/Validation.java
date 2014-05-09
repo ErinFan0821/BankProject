@@ -9,17 +9,18 @@ import java.util.regex.Pattern;
  */
 public class Validation {
     public static boolean isValidNickName(String nickName, List<Customer> customers) {
-        return isNickNameCanBeUsed(nickName, customers) && isStanderNickName(nickName);
+        return isNickNameUnique(nickName, customers) && isStanderNickName(nickName);
     }
 
-    private static boolean isNickNameCanBeUsed(String nickName, List<Customer> customers) {
-        boolean isNickNameCanBeUsed = true;
+    private static boolean isNickNameUnique(String nickName, List<Customer> customers) {
+        boolean isNickNameUnique = true;
         for (Customer customer : customers) {
             if (nickName.equals(customer.getNickName())) {
-                isNickNameCanBeUsed = false;
+                isNickNameUnique = false;
+                break;
             }
         }
-        return isNickNameCanBeUsed;
+        return isNickNameUnique;
     }
 
     private static boolean isStanderNickName(String nickName) {
