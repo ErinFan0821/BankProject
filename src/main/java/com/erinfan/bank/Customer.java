@@ -37,4 +37,9 @@ public class Customer {
     public void setAccount(Account account) {
         this.account = account;
     }
+
+    public int depositMoney(int sumOfMoney) {
+        account.deposit(sumOfMoney);
+        return account.getBalance();
+    }
 }

@@ -5,4 +5,17 @@ package com.erinfan.bank;
  */
 public class Account {
 
+    private int balance;
+
+    public Account() {
+        balance = 0;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void deposit(int sumOfMoney) {
+        balance += sumOfMoney;
+    }
 }
