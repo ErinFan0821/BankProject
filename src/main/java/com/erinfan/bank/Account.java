@@ -18,4 +18,8 @@ public class Account {
     public void deposit(int sumOfMoney) {
         balance += sumOfMoney;
     }
+
+    public void withdraw(int sumOfMoney) {
+        balance -= sumOfMoney;
+    }
 }

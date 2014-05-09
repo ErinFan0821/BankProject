@@ -42,4 +42,9 @@ public class Customer {
         account.deposit(sumOfMoney);
         return account.getBalance();
     }
+
+    public int withdrawMoney(int sumOfMoney) {
+        account.withdraw(sumOfMoney);
+        return account.getBalance();
+    }
 }
