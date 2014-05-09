@@ -3,22 +3,32 @@ package com.erinfan.bank;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.hamcrest.CoreMatchers.is;
 
 /**
  * Created by techops on 5/7/14.
  */
 public class BankTest {
+
+    public static final String VALID_NICK_NAME = "erinfan";
+    public static final String INVALID_NICK_NAME = "ErinFan";
+    public static final String DATE_OF_BIRTH1 = "2014-05-04";
+    public static final String DATE_OF_BIRTH2 = "1990-8-21";
+
     @Test
     public void should_add_customer_success() throws Exception {
         Bank bank = new Bank();
 
         Customer expectCustomer = new Customer();
-        expectCustomer.setNickName("erinfan");
-        expectCustomer.setDateOfBirth("2014-05-04");
+        expectCustomer.setNickName(VALID_NICK_NAME);
+        expectCustomer.setDateOfBirth(DATE_OF_BIRTH1);
 
         assertTrue(bank.addCustomer(expectCustomer));
-
+        Customer actualCustomer = bank.getCustomers().get(0);
+        assertThat(actualCustomer.getDateOfBirth().toString(), is(DATE_OF_BIRTH1));
+        assertThat(actualCustomer.getNickName().toString(), is(VALID_NICK_NAME));
     }
 
     @Test
@@ -26,8 +36,8 @@ public class BankTest {
         Bank bank = new Bank();
 
         Customer expectCustomer = new Customer();
-        expectCustomer.setNickName("ErinFan");
-        expectCustomer.setDateOfBirth("2014-05-04");
+        expectCustomer.setNickName(INVALID_NICK_NAME);
+        expectCustomer.setDateOfBirth(DATE_OF_BIRTH1);
 
         assertFalse(bank.addCustomer(expectCustomer));
     }
@@ -36,11 +46,11 @@ public class BankTest {
     public void should_add_customer_failed_if_customer_has_same_nick_name_with_others() throws Exception {
         Bank bank = new Bank();
         Customer customer1 = new Customer();
-        customer1.setNickName("erinfan");
-        customer1.setDateOfBirth("1988-5-13");
+        customer1.setNickName(VALID_NICK_NAME);
+        customer1.setDateOfBirth(DATE_OF_BIRTH1);
         Customer customer2 = new Customer();
-        customer2.setNickName("erinfan");
-        customer2.setDateOfBirth("1990-8-21");
+        customer2.setNickName(VALID_NICK_NAME);
+        customer2.setDateOfBirth(DATE_OF_BIRTH2);
 
         bank.addCustomer(customer1);
         assertFalse(bank.addCustomer(customer2));

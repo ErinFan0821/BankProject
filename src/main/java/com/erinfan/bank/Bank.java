@@ -19,4 +19,8 @@ public class Bank {
         }
         return false;
     }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
 }
