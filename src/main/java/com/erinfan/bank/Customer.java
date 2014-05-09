@@ -43,8 +43,12 @@ public class Customer {
         return account.getBalance();
     }
 
-    public int withdrawMoney(int sumOfMoney) {
-        account.withdraw(sumOfMoney);
+    public int withdrawMoney(int sumOfMoney) throws Exception {
+        if (sumOfMoney <= account.getBalance()) {
+            account.withdraw(sumOfMoney);
+        } else {
+            throw new Exception();
+        }
         return account.getBalance();
     }
 }

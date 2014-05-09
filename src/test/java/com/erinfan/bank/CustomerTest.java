@@ -45,4 +45,14 @@ public class CustomerTest {
         customer.depositMoney(2000);
         assertThat(customer.withdrawMoney(1000), is(1000));
     }
+
+    @Test(expected = Exception.class)
+    public void should_not_overdraw_money() throws Exception {
+        Customer customer = new Customer();
+        Account account = new Account();
+        customer.setAccount(account);
+
+        customer.depositMoney(1000);
+        customer.withdrawMoney(2000);
+    }
 }
