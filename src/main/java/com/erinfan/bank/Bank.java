@@ -1,5 +1,8 @@
 package com.erinfan.bank;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.erinfan.bank.Validation.isValidNickName;
 
 /**
@@ -7,16 +10,13 @@ import static com.erinfan.bank.Validation.isValidNickName;
  */
 public class Bank {
 
-    private Customer customer;
+    List<Customer> customers = new ArrayList<>();
 
-    public Customer addCustomer(Customer customer) {
-        if (isValidNickName(customer.getNickName())) {
-            this.customer = customer;
+    public boolean addCustomer(Customer customer) {
+        if (isValidNickName(customer.getNickName(), customers)) {
+            customers.add(customer);
+            return true;
         }
-        return null;
-    }
-
-    public Customer getCustomer() {
-        return customer;
+        return false;
     }
 }
