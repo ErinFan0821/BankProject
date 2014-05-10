@@ -15,6 +15,7 @@ public class Bank {
     public boolean addCustomer(Customer customer) {
         if (isValidNickName(customer.getNickName(), customers)) {
             customers.add(customer);
+            customer.setIsBankCustomer(true);
             return true;
         }
         return false;

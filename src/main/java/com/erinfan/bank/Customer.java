@@ -11,6 +11,8 @@ public class Customer {
     private String nickName;
     private Date dateOfBirth;
     private Account account;
+    private boolean isBankCustomer;
+    private java.util.Date joiningDate;
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
@@ -50,5 +52,21 @@ public class Customer {
             throw new Exception();
         }
         return account.getBalance();
+    }
+
+    public void setIsBankCustomer(boolean isBankCustomer) {
+        this.isBankCustomer = isBankCustomer;
+        if (isBankCustomer) {
+            final Date date = new Date(System.currentTimeMillis());
+            setJoiningDate(date);
+        }
+    }
+
+    public java.util.Date getJoiningDate() {
+        return joiningDate;
+    }
+
+    public void setJoiningDate(java.util.Date joiningDate) {
+        this.joiningDate = joiningDate;
     }
 }

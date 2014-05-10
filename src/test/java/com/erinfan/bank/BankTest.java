@@ -2,10 +2,8 @@ package com.erinfan.bank;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.*;
 
 /**
  * Created by techops on 5/7/14.
@@ -55,4 +53,15 @@ public class BankTest {
         bank.addCustomer(customer1);
         assertFalse(bank.addCustomer(customer2));
     }
+
+    @Test
+    public void should_add_join_date_to_added_customer() throws Exception {
+        Bank bank = new Bank();
+        Customer customer = new Customer();
+        customer.setNickName(VALID_NICK_NAME);
+
+        bank.addCustomer(customer);
+        assertNotNull(bank.getCustomers().get(0).getJoiningDate());
+    }
+
 }

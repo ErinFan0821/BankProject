@@ -1,5 +1,5 @@
 Story1: Add new customer
-As an Account Administrator I would like the bank to track new customers So that we can tie all records of them together
+ As an Account Administrator I would like the bank to track new customers So that we can tie all records of them together
 
 Acceptance Criteria:
 Each customer has a ‘nickname’
@@ -15,7 +15,7 @@ Task:
 
 
 Story2: Maintain Balance
-As a Customer I would like to know my balance when I deposit/withdraw money So that I can have confidence in the bank
+ As a Customer I would like to know my balance when I deposit/withdraw money So that I can have confidence in the bank
 
 Notes:
 Only dealing with whole numbers
@@ -34,7 +34,7 @@ Task:
  4. add overdraw validation
 
 Story3: Send Welcome message to customer(Has been block by Confirm GatewayApi)
-As a Bank Manager I would like customers to receive a welcome message when being added So that they feel like we are engaged with them
+ As a Bank Manager I would like customers to receive a welcome message when being added So that they feel like we are engaged with them
 
 Notes:
 You must use the Bank’s Message Gateway API (provided)
@@ -86,5 +86,8 @@ Initialise the date inside the Customer class
 
 Acceptance Criteria:
 The joining date is set to today’s date as soon as they are added to the bank 
+
+ Task:
+  1. add Joining Date property to customer
 
 

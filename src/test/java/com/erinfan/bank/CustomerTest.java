@@ -55,4 +55,12 @@ public class CustomerTest {
         customer.depositMoney(1000);
         customer.withdrawMoney(2000);
     }
+
+    @Test
+    public void should_initialise_joining_date_when_customer_was_added() throws Exception {
+        Customer customer = new Customer();
+        customer.setIsBankCustomer(true);
+
+        assertNotNull(customer.getJoiningDate());
+    }
 }
