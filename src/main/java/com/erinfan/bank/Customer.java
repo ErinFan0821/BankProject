@@ -38,23 +38,17 @@ public class Customer {
     }
 
     public int depositMoney(int sumOfMoney) {
-        account.deposit(sumOfMoney);
-        return account.getBalance();
+        return Bank.depositMoneyForCustomer(this, sumOfMoney);
     }
 
     public int withdrawMoney(int sumOfMoney) throws Exception {
-        if (sumOfMoney <= account.getBalance()) {
-            account.withdraw(sumOfMoney);
-        } else {
-            throw new Exception();
-        }
-        return account.getBalance();
+        return Bank.withDrawMoneyForCustomer(this, sumOfMoney);
     }
 
     public void setIsBankCustomer(boolean isBankCustomer) {
         this.isBankCustomer = isBankCustomer;
         if (isBankCustomer) {
-            final Date date = new Date(System.currentTimeMillis());
+            Date date = new Date(System.currentTimeMillis());
             setJoiningDate(date);
         }
     }

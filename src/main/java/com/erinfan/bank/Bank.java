@@ -29,17 +29,17 @@ public class Bank {
         return false;
     }
 
-    public int depositMoneyForCustomer(Customer customer, int sumOfMoney) {
+    public static int depositMoneyForCustomer(Customer customer, int sumOfMoney) {
         customer.getAccount().deposit(sumOfMoney);
         return getCustomerAccountBalance(customer);
     }
 
-    public int withDrawMoneyForCustomer(Customer customer, int sumOfMoney) {
+    public static int withDrawMoneyForCustomer(Customer customer, int sumOfMoney) {
         customer.getAccount().withdraw(sumOfMoney);
         return getCustomerAccountBalance(customer);
     }
 
-    private int getCustomerAccountBalance(Customer customer) {
+    private static int getCustomerAccountBalance(Customer customer) {
         return customer.getAccount().getBalance();
     }
 }
