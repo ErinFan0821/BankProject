@@ -4,9 +4,6 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-/**
- * Created by techops on 5/7/14.
- */
 public class Customer {
     private String nickName;
     private Date dateOfBirth;

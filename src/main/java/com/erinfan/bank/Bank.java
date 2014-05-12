@@ -3,17 +3,11 @@ package com.erinfan.bank;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.erinfan.bank.Validation.isValidNickName;
-
-/**
- * Created by techops on 5/7/14.
- */
 public class Bank {
-
-    List<Customer> customers = new ArrayList<>();
+    private List<Customer> customers = new ArrayList<>();
 
     public boolean addCustomer(Customer customer) {
-        if (isValidNickName(customer.getNickName(), customers)) {
+        if (!isCustomerExisted(customer) && Validation.isValidNickName(customer.getNickName())) {
             customers.add(customer);
             customer.setIsBankCustomer(true);
             return true;
@@ -21,7 +15,16 @@ public class Bank {
         return false;
     }
 
-    public List<Customer> getCustomers() {
+    List<Customer> getCustomers() {
         return customers;
+    }
+
+    private boolean isCustomerExisted(Customer newCustomer) {
+        for (Customer customer : customers) {
+            if (newCustomer.getNickName().equals(customer.getNickName())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

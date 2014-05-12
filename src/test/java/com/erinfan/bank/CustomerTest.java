@@ -11,6 +11,13 @@ import static org.hamcrest.CoreMatchers.is;
  */
 public class CustomerTest {
     @Test
+    public void should_add_date_of_birth_success() throws Exception {
+        Customer customer = new Customer();
+        customer.setDateOfBirth("2014-5-15");
+        assertThat(customer.getDateOfBirth().toString(), is("2014-05-15"));
+    }
+
+    @Test
     public void should_get_account_for_the_customer() throws Exception {
         Customer customer = new Customer();
         customer.setAccount(new Account());
