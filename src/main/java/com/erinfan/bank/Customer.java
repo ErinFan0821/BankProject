@@ -1,8 +1,8 @@
 package com.erinfan.bank;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Customer {
     private String nickName;
@@ -21,7 +21,7 @@ public class Customer {
 
     public void setDateOfBirth(String dateOfBirth) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date date = sdf.parse(dateOfBirth);
+        Date date = sdf.parse(dateOfBirth);
         this.dateOfBirth = new Date(date.getTime());
     }
 
