@@ -10,7 +10,6 @@ import static org.junit.Assert.*;
 public class BankTest {
 
     public static final String VALID_NICK_NAME = "erinfan";
-    public static final String INVALID_NICK_NAME = "ErinFan";
 
     @Test
     public void should_add_customer_success() throws Exception {
@@ -20,16 +19,6 @@ public class BankTest {
         expectCustomer.setNickName(VALID_NICK_NAME);
 
         assertTrue(bank.addCustomer(expectCustomer));
-    }
-
-    @Test
-    public void should_add_customer_failed_if_customer_nickname_including_uppercase_letters() throws Exception {
-        Bank bank = new Bank();
-
-        Customer expectCustomer = new Customer();
-        expectCustomer.setNickName(INVALID_NICK_NAME);
-
-        assertFalse(bank.addCustomer(expectCustomer));
     }
 
     @Test
