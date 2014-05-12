@@ -6,14 +6,27 @@ import java.util.List;
 public class Bank {
     private List<Customer> customers = new ArrayList<>();
 
-    public boolean addCustomer(Customer customer) {
-        if (!isCustomerExisted(customer) && Validation.isValidNickName(customer.getNickName())) {
-            customer.setAccount(new Account());
+    public boolean registerCustomer(Customer customer) {
+        relateAccountToCustomer(customer,createAccount());
+        return addCustomerToBank(customer);
+    }
+
+    private boolean addCustomerToBank(Customer customer) {
+        if (!isCustomerExisted(customer) && NickNameValidation.isValidNickName(customer.getNickName())) {
             customers.add(customer);
             customer.setIsBankCustomer(true);
             return true;
         }
         return false;
+    }
+
+
+    private void relateAccountToCustomer(Customer customer, Account account){
+        customer.setAccount(account);
+    }
+    
+    private Account createAccount() {
+        return new Account();
     }
 
     List<Customer> getCustomers() {
@@ -29,17 +42,12 @@ public class Bank {
         return false;
     }
 
-    public static int depositMoneyForCustomer(Customer customer, int sumOfMoney) {
-        customer.getAccount().deposit(sumOfMoney);
-        return getCustomerAccountBalance(customer);
+    public void depositMoneyForAccount(Account account, int sumOfMoney) {
+        account.deposit(sumOfMoney);
     }
 
-    public static int withDrawMoneyForCustomer(Customer customer, int sumOfMoney) {
-        customer.getAccount().withdraw(sumOfMoney);
-        return getCustomerAccountBalance(customer);
+    public void withdrawMoneyForAccount(Account account, int sumOfMoney) {
+        account.withdraw(sumOfMoney);
     }
 
-    private static int getCustomerAccountBalance(Customer customer) {
-        return customer.getAccount().getBalance();
-    }
 }

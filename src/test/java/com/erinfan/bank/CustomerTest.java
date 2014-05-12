@@ -2,9 +2,14 @@ package com.erinfan.bank;
 
 import org.junit.Test;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.isA;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.is;
 
 /**
  * Created by techops on 5/9/14.
@@ -14,7 +19,9 @@ public class CustomerTest {
     public void should_add_date_of_birth_success() throws Exception {
         Customer customer = new Customer();
         customer.setDateOfBirth("2014-5-15");
-        assertThat(customer.getDateOfBirth().toString(), is("2014-05-15"));
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        assertThat(dateFormatter.format(customer.getDateOfBirth()), is("2014-05-15"));
+        assertThat(customer.getDateOfBirth(), isA(Date.class));
     }
 
     @Test
@@ -22,35 +29,6 @@ public class CustomerTest {
         Customer customer = new Customer();
         customer.setAccount(new Account());
         assertNotNull(customer.getAccount());
-    }
-
-    @Test
-    public void should_reflect_account_balance_after_deposit_money() throws Exception {
-        Customer customer = new Customer();
-        Account account = new Account();
-        customer.setAccount(account);
-
-        assertThat(customer.depositMoney(10000), is(10000));
-    }
-
-    @Test
-    public void should_reflect_0_balance_after_withdraw_all_money() throws Exception {
-        Customer customer = new Customer();
-        Account account = new Account();
-        customer.setAccount(account);
-
-        customer.depositMoney(1000);
-        assertThat(customer.withdrawMoney(1000), is(0));
-    }
-
-    @Test
-    public void should_reflect_correct_balance_after_withdraw_money_from_balance() throws Exception {
-        Customer customer = new Customer();
-        Account account = new Account();
-        customer.setAccount(account);
-
-        customer.depositMoney(2000);
-        assertThat(customer.withdrawMoney(1000), is(1000));
     }
 
     @Test

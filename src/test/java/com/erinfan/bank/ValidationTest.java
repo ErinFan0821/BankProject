@@ -11,17 +11,17 @@ import static org.junit.Assert.assertTrue;
 public class ValidationTest {
     @Test
     public void should_be_valid_nick_name_if_name_is_standard_format() throws Exception {
-        assertTrue(Validation.isValidNickName("erinfan"));
+        assertTrue(NickNameValidation.isValidNickName("erinfan"));
     }
 
     @Test
     public void should_be_invalid_nick_name_if_name_not_standard_format() throws Exception {
-        assertFalse(Validation.isValidNickName("ErinFan2"));
+        assertFalse(NickNameValidation.isValidNickName("ErinFan2"));
     }
 
     @Test
     public void should_be_invalid_nick_name_if_name_is_empty() throws Exception {
-        assertFalse(Validation.isValidNickName(""));
+        assertFalse(NickNameValidation.isValidNickName(""));
 
     }
 }

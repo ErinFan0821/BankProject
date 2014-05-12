@@ -3,13 +3,18 @@ package com.erinfan.bank;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class Customer {
     private String nickName;
     private Date dateOfBirth;
     private Account account;
     private boolean isBankCustomer;
-    private java.util.Date joiningDate;
+    private Date joiningDate;
+
+    public Customer() {
+        this.account = new Account();
+    }
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
@@ -20,9 +25,9 @@ public class Customer {
     }
 
     public void setDateOfBirth(String dateOfBirth) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = sdf.parse(dateOfBirth);
-        this.dateOfBirth = new Date(date.getTime());
+        SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+        parser.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        this.dateOfBirth = parser.parse(dateOfBirth);
     }
 
     public Date getDateOfBirth() {
@@ -37,14 +42,6 @@ public class Customer {
         this.account = account;
     }
 
-    public int depositMoney(int sumOfMoney) {
-        return Bank.depositMoneyForCustomer(this, sumOfMoney);
-    }
-
-    public int withdrawMoney(int sumOfMoney) throws Exception {
-        return Bank.withDrawMoneyForCustomer(this, sumOfMoney);
-    }
-
     public void setIsBankCustomer(boolean isBankCustomer) {
         this.isBankCustomer = isBankCustomer;
         if (isBankCustomer) {
@@ -53,11 +50,11 @@ public class Customer {
         }
     }
 
-    public java.util.Date getJoiningDate() {
+    public Date getJoiningDate() {
         return joiningDate;
     }
 
-    public void setJoiningDate(java.util.Date joiningDate) {
+    public void setJoiningDate(Date joiningDate) {
         this.joiningDate = joiningDate;
     }
 }

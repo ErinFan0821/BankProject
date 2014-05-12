@@ -16,19 +16,19 @@ public class BankTest {
         Customer expectCustomer = new Customer();
         expectCustomer.setNickName(VALID_NICK_NAME);
 
-        assertTrue(bank.addCustomer(expectCustomer));
+        assertTrue(bank.registerCustomer(expectCustomer));
     }
 
     @Test
     public void should_add_customer_failed_if_customer_has_same_nick_name_with_others() throws Exception {
         Bank bank = new Bank();
-        Customer customer1 = new Customer();
-        customer1.setNickName(VALID_NICK_NAME);
-        Customer customer2 = new Customer();
-        customer2.setNickName(VALID_NICK_NAME);
+        Customer customer = new Customer();
+        customer.setNickName(VALID_NICK_NAME);
+        Customer customerExit = new Customer();
+        customerExit.setNickName(VALID_NICK_NAME);
 
-        bank.addCustomer(customer1);
-        assertFalse(bank.addCustomer(customer2));
+        bank.registerCustomer(customer);
+        assertFalse(bank.registerCustomer(customerExit));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class BankTest {
         Customer customer = new Customer();
         customer.setNickName(VALID_NICK_NAME);
 
-        bank.addCustomer(customer);
+        bank.registerCustomer(customer);
         assertNotNull(bank.getCustomers().get(0).getJoiningDate());
     }
 
@@ -48,9 +48,10 @@ public class BankTest {
         Customer customer = new Customer();
         customer.setNickName(VALID_NICK_NAME);
 
-        bank.addCustomer(customer);
+        bank.registerCustomer(customer);
 
-        assertThat(bank.depositMoneyForCustomer(customer, 1000), is(1000));
+        bank.depositMoneyForAccount(customer.getAccount(), 1000);
+        assertThat(customer.getAccount().getBalance(), is(1000));
     }
 
     @Test
@@ -59,8 +60,10 @@ public class BankTest {
         Customer customer = new Customer();
         customer.setNickName(VALID_NICK_NAME);
 
-        bank.addCustomer(customer);
-        bank.depositMoneyForCustomer(customer, 10000);
-        assertThat(bank.withDrawMoneyForCustomer(customer, 2000), is(8000));
+        bank.registerCustomer(customer);
+        Account account = customer.getAccount();
+        bank.depositMoneyForAccount(account, 10000);
+        bank.withdrawMoneyForAccount(account, 2000);
+        assertThat(account.getBalance(), is(8000));
     }
 }
