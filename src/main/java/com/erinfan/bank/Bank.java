@@ -8,6 +8,7 @@ public class Bank {
 
     public boolean addCustomer(Customer customer) {
         if (!isCustomerExisted(customer) && Validation.isValidNickName(customer.getNickName())) {
+            customer.setAccount(new Account());
             customers.add(customer);
             customer.setIsBankCustomer(true);
             return true;
@@ -26,5 +27,19 @@ public class Bank {
             }
         }
         return false;
+    }
+
+    public int depositMoneyForCustomer(Customer customer, int sumOfMoney) {
+        customer.getAccount().deposit(sumOfMoney);
+        return getCustomerAccountBalance(customer);
+    }
+
+    public int withDrawMoneyForCustomer(Customer customer, int sumOfMoney) {
+        customer.getAccount().withdraw(sumOfMoney);
+        return getCustomerAccountBalance(customer);
+    }
+
+    private int getCustomerAccountBalance(Customer customer) {
+        return customer.getAccount().getBalance();
     }
 }

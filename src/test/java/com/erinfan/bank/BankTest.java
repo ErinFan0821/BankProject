@@ -3,10 +3,8 @@ package com.erinfan.bank;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.is;
 
-/**
- * Created by techops on 5/7/14.
- */
 public class BankTest {
 
     public static final String VALID_NICK_NAME = "erinfan";
@@ -43,4 +41,26 @@ public class BankTest {
         assertNotNull(bank.getCustomers().get(0).getJoiningDate());
     }
 
+    @Test
+    public void should_deposit_money_success() throws Exception {
+        Bank bank = new Bank();
+
+        Customer customer = new Customer();
+        customer.setNickName(VALID_NICK_NAME);
+
+        bank.addCustomer(customer);
+
+        assertThat(bank.depositMoneyForCustomer(customer, 1000), is(1000));
+    }
+
+    @Test
+    public void should_withdraw_money_success_for_customer() throws Exception {
+        Bank bank = new Bank();
+        Customer customer = new Customer();
+        customer.setNickName(VALID_NICK_NAME);
+
+        bank.addCustomer(customer);
+        bank.depositMoneyForCustomer(customer, 10000);
+        assertThat(bank.withDrawMoneyForCustomer(customer, 2000), is(8000));
+    }
 }
