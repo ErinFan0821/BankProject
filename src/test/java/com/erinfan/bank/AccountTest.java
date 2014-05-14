@@ -10,9 +10,9 @@ import static org.hamcrest.CoreMatchers.is;
  */
 public class AccountTest {
 
-    public static final int ONE_THOUSAND_MONEY = 1000;
-    public static final int TWO_THOUSAND_MONEY = 2000;
-    public static final int THREE_THOUSAND_MONEY = 3000;
+    private static final int ONE_THOUSAND_MONEY = 1000;
+    private static final int TWO_THOUSAND_MONEY = 2000;
+    private static final int THREE_THOUSAND_MONEY = 3000;
 
     @Test
     public void should_get_correct_balance_after_several_times_of_deposit() throws Exception {

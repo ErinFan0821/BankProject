@@ -7,7 +7,7 @@ import static org.hamcrest.CoreMatchers.is;
 
 public class BankTest {
 
-    public static final String VALID_NICK_NAME = "erinfan";
+    private static final String VALID_NICK_NAME = "erinfan";
 
     @Test
     public void should_add_customer_success() throws Exception {
